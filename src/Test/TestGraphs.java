@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import BFS.BFS;
 import BFS.Node;
+public class TestGraphs {
 
 /*
  *               One
@@ -16,24 +17,7 @@ import BFS.Node;
  * 
  */
 
-public class TestGraphs {
-	@Test
-	public void testTree(){
-		Node<String> searchMe = simpleTree();
-		BFS<String> bfs = new BFS<String>();
-		assertTrue(bfs.search("Nine", searchMe)) ;
-		assertTrue(bfs.search("Two", searchMe)) ;
-		assertFalse(bfs.search("Ten", searchMe)) ;
-	}
-	
-	@Test
-	public void testCircle(){
-		Node<String> searchMe = circle();
-		BFS<String> bfs = new BFS<String>();
-		assertTrue(bfs.search("C", searchMe)) ;
-	}
-	
-	public Node<String> simpleTree(){
+	private Node<String> simpleTree(){
 		
 		//leaf nodes - level 3
 		Node<String> five = new Node<String>("Five");
@@ -70,7 +54,7 @@ public class TestGraphs {
 	 *        ---> A ---> B ---> C --- 
 	*/
 	
-	Node<String> circle(){
+	private Node<String> circle(){
 		Node<String> a = new Node<String>("A");
 		Node<String> b = new Node<String>("B");
 		Node<String> c = new Node<String>("C");
@@ -79,4 +63,21 @@ public class TestGraphs {
 		c.addChild(a) ;
 		return a ;
 	}
+
+	@Test
+	public void testTree(){
+		Node<String> searchMe = simpleTree();
+		BFS<String> bfs = new BFS<String>();
+		assertTrue(bfs.search("Nine", searchMe)) ;
+		assertTrue(bfs.search("Two", searchMe)) ;
+		assertFalse(bfs.search("Ten", searchMe)) ;
+	}
+	
+	@Test
+	public void testCircle(){
+		Node<String> searchMe = circle();
+		BFS<String> bfs = new BFS<String>();
+		assertTrue(bfs.search("C", searchMe)) ;
+	}
+	
 }
