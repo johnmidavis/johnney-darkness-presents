@@ -78,6 +78,7 @@ public class TestGraphs {
 		Node<String> searchMe = circle();
 		BFS<String> bfs = new BFS<String>();
 		assertTrue(bfs.search("C", searchMe)) ;
+		assertFalse(bfs.search("D", searchMe)) ;
 	}
 	
 }
